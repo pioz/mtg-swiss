@@ -58,11 +58,35 @@
       </div>
 
       <div id="content"><div id='filecontents'>
-<p><img src="https://github.com/pioz/mtg-swiss/workflows/Ruby/badge.svg"> <a href="https://codecov.io/gh/pioz/mtg-swiss"><img src="https://codecov.io/gh/pioz/mtg-swiss/branch/master/graph/badge.svg?token=bsSUOW6wWa"></a></p>
+<p><img src="https://github.com/pioz/mtg-swiss/workflows/Ruby/badge.svg"> <a href="https://codecov.io/gh/pioz/mtg-swiss"><img src="https://codecov.io/gh/pioz/mtg-swiss/branch/master/graph/badge.svg?token=bsSUOW6wWa"></a> <a href="https://pioz.github.io/mtg-swiss"><img src="https://img.shields.io/badge/yard-doc-blue"></a></p>
 
 <h1 id="label-MTG+Swiss">MTG Swiss</h1>
 
 <p>A lightweight Ruby library implementing Magic the Gathering Swiss tournament rules. Easily integrate points systems, ranking, and tiebreaker rules for fair and competitive event management. Elevate your tournaments with minimal effort.</p>
+
+<p>The tournament unfolds as follows:</p>
+<ol><li>
+<p>For the first round, players are randomly paired.</p>
+</li><li>
+<p>After each round, the standings are calculated.</p>
+</li><li>
+<p>Players are paired based on their partial ranking in a strict manner,  rank 1 will compete against rank 2, rank 3 against rank 4, and so on. It is  ensured that a player does not face the same opponent multiple times.</p>
+</li><li>
+<p>This process continues until the total number of rounds is reached, which is <code>log2(number_of_players)</code>.</p>
+</li></ol>
+
+<p>The following tiebreakers are used to determine the standings:</p>
+<ol><li>
+<p>Match points</p>
+</li><li>
+<p>Opponents’ match-win percentage</p>
+</li><li>
+<p>Game-win percentage</p>
+</li><li>
+<p>Opponents’ game-win percentage</p>
+</li></ol>
+
+<p><a href="https://media.wizards.com/2023/wpn/marketing_materials/wpn/mtg_mtr_2023may29_en.pdf">Official Wizards of the Coast Tournament Rules</a></p>
 
 <h2 id="label-Installation">Installation</h2>
 
@@ -105,7 +129,7 @@
 </div></div>
 
       <div id="footer">
-  Generated on Mon Jul 24 13:29:03 2023 by
+  Generated on Mon Jul 24 14:21:19 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>
