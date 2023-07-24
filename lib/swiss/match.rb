@@ -59,13 +59,14 @@ module Swiss
     # @param gdc [Integer] Number of tied games.
     # @param p1_drop [Boolean] Player 1 drop after this match.
     # @param p2_drop [Boolean] Player 2 drop after this match.
-    # @return [void]
+    # @return [String] The record of the match (Wins–Losses–Draws).
     def result(p1_gwc, p2_gwc, gdc = 0, p1_drop: false, p2_drop: false)
       @p1_gwc = p1_gwc
       @p2_gwc = p2_gwc
       @gdc = gdc
       @p1.drop = p1_drop
       @p2.drop = p2_drop if @p2
+      return self.record
     end
 
     # Returns `true` if it is a bye match.
@@ -99,6 +100,15 @@ module Swiss
     # @return [Integer]
     def games
       @p1_gwc + @p2_gwc + @gdc
+    end
+
+    # Returns the record for the match (Wins–Losses–Draws). Returns `nil` if
+    # the match is not finished.
+    # @return [String,nil]
+    def record
+      return nil? unless self.finished?
+
+      return "#{@p1_gwc}-#{@p2_gwc}-#{@gdc}"
     end
 
     # Returns `true` if the match has finished. A match is considered finished

@@ -26,9 +26,16 @@ module Swiss
       assert_equal 1, t.rounds.size
       assert_equal 2, t.current_round.size
       assert_equal 'Enrico vs Nicola', t.table(0).to_s
+      assert_equal 'Enrico', t.table(0).p1.name
+      assert_equal 'Nicola', t.table(0).p2.name
       assert_equal 'Luca vs Alberto', t.table(1).to_s
-      t.set_table_result(0, 2, 0)
-      t.set_table_result(1, 2, 1)
+      assert_equal 'Luca', t.table(1).p1.name
+      assert_equal 'Alberto', t.table(1).p2.name
+      record_table_0 = t.set_table_result(0, 2, 0)
+      record_table_1 = t.set_table_result(1, 2, 1)
+
+      assert_equal '2-0-0', record_table_0
+      assert_equal '2-1-0', record_table_1
       t.next_round
 
       # Round 2

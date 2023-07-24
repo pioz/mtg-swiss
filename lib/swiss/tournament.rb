@@ -67,7 +67,7 @@ module Swiss
     # @param gdc [Integer] Number of tied games.
     # @param p1_drop [Boolean] Player 1 drop after this match.
     # @param p2_drop [Boolean] Player 2 drop after this match.
-    # @return [void]
+    # @return [String] The record of the match (Wins–Losses–Draws).
     def set_table_result(table_number, p1_gwc, p2_gwc, gdc = 0, p1_drop: false, p2_drop: false)
       current_round[table_number].result(p1_gwc, p2_gwc, gdc, p1_drop: p1_drop, p2_drop: p2_drop)
     end
