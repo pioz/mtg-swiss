@@ -7,9 +7,6 @@ GEM
   remote: https://rubygems.org/
   specs:
     ast (2.4.2)
-    codecov (0.2.12)
-      json
-      simplecov
     docile (1.4.0)
     json (2.6.3)
     language_server-protocol (3.17.0.3)
@@ -48,6 +45,9 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
+    simplecov-cobertura (2.1.0)
+      rexml
+      simplecov (~> 0.19)
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.4)
     unicode-display_width (2.4.2)
@@ -58,7 +58,6 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  codecov
   minitest
   mtg-swiss!
   rake (~> 13.0)
@@ -67,6 +66,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rake
   simplecov
+  simplecov-cobertura
   yard
 
 BUNDLED WITH

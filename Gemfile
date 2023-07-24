@@ -15,7 +15,7 @@ group :development do
 end
 
 group :test do
-  gem 'codecov'
   gem 'minitest'
   gem 'simplecov'
+  gem 'simplecov-cobertura'
 end
