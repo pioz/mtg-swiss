@@ -22,5 +22,5 @@ YARD::Rake::YardocTask.new do |t|
   t.options << '--markup=markdown'
   t.options << '--readme=README.md'
   t.options << '--title="MTG Swiss"'
-  t.options << '--output-dir=doc'
+  t.options << '--output-dir=docs'
 end
