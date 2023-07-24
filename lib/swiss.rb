@@ -5,6 +5,6 @@ require_relative 'swiss/player'
 require_relative 'swiss/tournament'
 require_relative 'swiss/version'
 
-# Module that wrap all classes and functionalities of the gem.
+# Wrap all classes and functionalities of the gem.
 module Swiss
 end

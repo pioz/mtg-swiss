@@ -1,14 +1,15 @@
 module Swiss
-  # Class that rappresent a tournament with Magic the Gathering Swiss rules.
+  # Represents a tournament with Magic the Gathering Swiss rules.
+  #
   # The tournament unfolds as follows:
   #
   # 1. For the first round, players are randomly paired.
   # 2. After each round, the standings are calculated.
   # 3. Players are paired based on their partial ranking in a strict manner,
-  #  i.e., rank 1 will compete against rank 2, rank 3 against rank 4, and so
-  #  on. It is ensured that a player does not face the same opponent multiple
-  #  times.
-  # 4. This process continues until the total number of rounds is reached, which is `log2(number_of_players)`.
+  # rank 1 will compete against rank 2, rank 3 against rank 4, and so on. It
+  # is ensured that a player does not face the same opponent multiple times.
+  # 4. This process continues until the total number of rounds is reached,
+  # which is `log2(number_of_players)`.
   #
   # The following tiebreakers are used to determine the standings:
   #
@@ -22,7 +23,7 @@ module Swiss
     # @return [Array<Player>]
     attr_reader :players
 
-    # Expected number of swiss rounds.
+    # Expected number of Swiss rounds.
     # @return [Integer]
     attr_reader :total_rounds
 
@@ -30,7 +31,7 @@ module Swiss
     # @return [Array<Array<Match>>]
     attr_reader :rounds
 
-    # Initialize a tournament. All existing players will be resetted with
+    # Initialize a tournament. All existing players will be reset with
     # {Player.reset_stats}.
     # @param players [Array<Player>,Array<String>] List of players
     #  participating in the tournament. It can be an array of String with

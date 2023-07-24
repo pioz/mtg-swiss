@@ -1,5 +1,5 @@
 module Swiss
-  # Class that rappresent a player in the swiss tournament.
+  # Represents a player in the Swiss tournament.
   class Player
     # The player identifier.
     # @return [String]
@@ -71,7 +71,7 @@ module Swiss
     end
 
     # Reset player stats.
-    # @return [Player] Returns the self player with all stats resetted.
+    # @return [Player] Returns the self player with all stats reset.
     def reset_stats
       @opponents = []
       @matches = []
@@ -85,7 +85,7 @@ module Swiss
       return self
     end
 
-    # Print a player with stats.
+    # Returns a string representation of the player with their stats.
     # @return [String]
     def to_s
       rows = []
@@ -98,7 +98,7 @@ module Swiss
       return rows.join("\n")
     end
 
-    # Returns `true` if player has dropped.
+    # Returns `true` if the player has dropped.
     # @return [Boolean]
     def dropped?
       @drop

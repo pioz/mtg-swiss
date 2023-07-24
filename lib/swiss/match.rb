@@ -1,10 +1,10 @@
 module Swiss
-  # Class that rappresent a match in the swiss tournament.
+  # Represents a match in the Swiss tournament.
   class Match
     # Player 1 of the match.
     # @return [Player]
     attr_reader :p1
-    # Player 2 of the match. Can be `nil` if player 1 win the match for a
+    # Player 2 of the match. Can be `nil` if player 1 wins the match for a
     # bye.
     # @return [Player,nil]
     attr_reader :p2
@@ -24,7 +24,7 @@ module Swiss
     # Initialize the match.
     # @param player1 [Player] The player 1
     # @param player2 [Player] The player 2
-    # @raise RuntimeError If player 1 has already challenged player 2 or viceversa.
+    # @raise RuntimeError If player 1 has already challenged player 2 or vice versa.
     def initialize(player1, player2)
       @p1 = player1
       @p2 = player2
@@ -45,7 +45,7 @@ module Swiss
       end
     end
 
-    # Print the match.
+    # Returns a string representation of the match.
     # @return [String]
     def to_s
       return "#{@p1.name} bye" if @p2.nil?
