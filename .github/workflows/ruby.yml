@@ -22,12 +22,10 @@ jobs:
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run tests
         run: bundle exec rake test
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
         env:
-          CODECOV: true
-      # - name: Upload coverage report to Codecov
-      #   uses: codecov/codecov-action@v1
-      #   with:
-      #     file: ./coverage/.resultset.json
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   rubocop:
     runs-on: ubuntu-latest
