@@ -34,7 +34,7 @@ module Swiss
       # Round 2
 
       refute_predicate t, :finished?
-      assert_equal %w[Enrico Luca Nicola Alberto], players.sort.map(&:name)
+      assert_equal %w[Enrico Luca Nicola Alberto], t.standings.map(&:name)
       assert_equal 3, enrico.mp
       assert_equal 33.33, enrico.omw
       assert_equal 100.0, enrico.gw
@@ -67,7 +67,7 @@ module Swiss
       # Round 3
 
       assert_predicate t, :finished?
-      assert_equal %w[Enrico Nicola Luca Alberto], players.sort.map(&:name)
+      assert_equal %w[Enrico Nicola Luca Alberto], t.standings.map(&:name)
       assert_equal 6, enrico.mp
       assert_equal 50.0, enrico.omw
       assert_equal 100.0, enrico.gw
@@ -174,7 +174,7 @@ module Swiss
       # Round 2
 
       refute_predicate t, :finished?
-      assert_equal %w[Enrico Federico Nicola Luca Alberto], players.sort.map(&:name)
+      assert_equal %w[Enrico Federico Nicola Luca Alberto], t.standings.map(&:name)
       assert_equal 3, enrico.mp
       assert_equal 33.33, enrico.omw
       assert_equal 66.67, enrico.gw
@@ -208,7 +208,7 @@ module Swiss
       # Round 3
 
       refute_predicate t, :finished?
-      assert_equal %w[Federico Enrico Alberto Luca Nicola], players.sort.map(&:name)
+      assert_equal %w[Federico Enrico Alberto Luca Nicola], t.standings.map(&:name)
       assert_equal 6, enrico.mp
       assert_equal 33.33, enrico.omw
       assert_equal 80.0, enrico.gw
@@ -240,7 +240,7 @@ module Swiss
       t.next_round
 
       assert_predicate t, :finished?
-      assert_equal %w[Enrico Federico Alberto Nicola Luca], players.sort.map(&:name)
+      assert_equal %w[Enrico Federico Alberto Nicola Luca], t.standings.map(&:name)
       assert_equal 9, enrico.mp
       assert_equal 44.44, enrico.omw
       assert_equal 75.0, enrico.gw
@@ -274,6 +274,20 @@ module Swiss
       end
 
       assert_equal 'Enrico has already challenged Nicola', error.message
+    end
+
+    def test_player_to_s
+      enrico = Player.new('Enrico')
+      expected_output = <<~STRING
+        Enrico
+          mp: 0
+         omw: 33.33
+          gw: 33.33
+         ogw: 33.33
+          mw: 33.33
+      STRING
+
+      assert_equal expected_output, enrico.to_s + "\n"
     end
 
     def test_big_swiss
