@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description = 'A lightweight Ruby library implementing Magic the Gathering Swiss tournament rules. Easily integrate points systems, ranking, and tiebreaker rules for fair and competitive event management. Elevate your tournaments with minimal effort.'
   spec.homepage = 'https://github.com/pioz/mtg-swiss'
   spec.license = 'MIT'
-  spec.required_ruby_version = '>= 2.6.0'
+  spec.required_ruby_version = '>= 2.7.0'
 
   spec.metadata['allowed_push_host'] = "TODO: Set to your gem server 'https://example.com'"
 
