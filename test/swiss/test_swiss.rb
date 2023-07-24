@@ -104,8 +104,6 @@ module Swiss
       alberto = Player.new('Alberto')
       players = [enrico, nicola, luca, alberto]
 
-      assert_equal %w[Enrico Nicola Luca Alberto], players.sort.map(&:name)
-
       t = Tournament.new(players, first_pairing_proc: ->(plys) { plys.each_slice(2).to_a })
 
       # Round 1
@@ -121,7 +119,7 @@ module Swiss
       # Round 2
 
       refute_predicate t, :finished?
-      assert_equal %w[Enrico Luca Nicola Alberto], players.sort.map(&:name)
+      assert_equal %w[Enrico Luca Nicola Alberto], t.standings.map(&:name)
 
       assert_equal 2, t.rounds.size
       assert_equal 1, t.current_round.size
@@ -132,7 +130,7 @@ module Swiss
       # Round 3
 
       assert_predicate t, :finished?
-      assert_equal %w[Enrico Luca Nicola Alberto], players.sort.map(&:name)
+      assert_equal %w[Enrico Luca Nicola Alberto], t.standings.map(&:name)
       assert_equal 6, enrico.mp
       assert_equal 33.33, enrico.omw
       assert_equal 100.0, enrico.gw
@@ -162,8 +160,6 @@ module Swiss
       alberto = Player.new('Alberto')
       federico = Player.new('Federico')
       players = [enrico, nicola, luca, alberto, federico]
-
-      assert_equal %w[Enrico Nicola Luca Alberto Federico], players.sort.map(&:name)
 
       t = Tournament.new(players, first_pairing_proc: ->(_plys) { [[alberto, enrico], [luca, nicola], [federico, nil]] })
 
@@ -298,7 +294,7 @@ module Swiss
     end
 
     def test_big_swiss
-      players = Array.new(1001) { Player.new('P') }
+      players = Array.new(1001) { |i| "P#{i}" }
       t = Tournament.new(players)
       loop do
         t.current_round.each_with_index do |_match, i|

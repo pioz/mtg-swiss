@@ -40,14 +40,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 ## Usage
 
 ```ruby
-players = [
-  Swiss::Player('Enrico'),
-  Swiss::Player('Nicola'),
-  Swiss::Player('Luca'),
-  Swiss::Player('Alberto')
-]
-
-t = Swiss::Tournament.new(players)
+t = Swiss::Tournament.new(%w[Enrico Nicola Luca Alberto])
 t.set_table_result(0, 2, 0)
 t.set_table_result(1, 2, 1)
 t.next_round

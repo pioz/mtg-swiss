@@ -67,17 +67,22 @@ module Swiss
     # @param name [String] The name of the player.
     def initialize(name)
       @name = name
+      self.reset_stats
+    end
+
+    # Reset player stats.
+    # @return [Player] Returns the self player with all stats resetted.
+    def reset_stats
       @opponents = []
       @matches = []
-
       @mp = 0
       @gp = 0
       @gw = 33.33
       @ogw = 33.33
       @mw = 33.33
       @omw = 33.33
-
       @drop = false
+      return self
     end
 
     # Print a player with stats.

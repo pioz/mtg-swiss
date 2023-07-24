@@ -30,13 +30,15 @@ module Swiss
     # @return [Array<Array<Match>>]
     attr_reader :rounds
 
-    # Initialize a tournament.
-    # @param players [Array<Player>] List of players participating in the
-    #  tournament.
+    # Initialize a tournament. All existing players will be resetted with
+    # {Player.reset_stats}.
+    # @param players [Array<Player>,Array<String>] List of players
+    #  participating in the tournament. It can be an array of String with
+    #  player names or an array of {Player}.
     # @param first_pairing_proc [Proc] Proc used for first round pairing. Must
     #  return an array of player tuples.
     def initialize(players, first_pairing_proc: ->(plys) { plys.shuffle.each_slice(2).to_a })
-      @players = players
+      @players = players.map { |player| player.is_a?(Player) ? player.reset_stats : Player.new(player) }
       @total_rounds = Math.log2(@players.size).ceil
       @rounds = [pair_players(first_pairing_proc.call(@players))]
     end

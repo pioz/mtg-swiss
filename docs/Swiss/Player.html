@@ -456,6 +456,30 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#reset_stats-instance_method" title="#reset_stats (instance method)">#<strong>reset_stats</strong>  &#x21d2; Player </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Reset player stats.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#to_s-instance_method" title="#to_s (instance method)">#<strong>to_s</strong>  &#x21d2; String </a>
     
 
@@ -532,34 +556,14 @@
 68
 69
 70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81</pre>
+71</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 68</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
-  <span class='ivar'>@opponents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@matches</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-
-  <span class='ivar'>@mp</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='ivar'>@gp</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='ivar'>@gw</span> <span class='op'>=</span> <span class='float'>33.33</span>
-  <span class='ivar'>@ogw</span> <span class='op'>=</span> <span class='float'>33.33</span>
-  <span class='ivar'>@mw</span> <span class='op'>=</span> <span class='float'>33.33</span>
-  <span class='ivar'>@omw</span> <span class='op'>=</span> <span class='float'>33.33</span>
-
-  <span class='ivar'>@drop</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_reset_stats'>reset_stats</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1170,21 +1174,21 @@
       <pre class="lines">
 
 
-110
-111
-112
-113
-114
 115
 116
 117
 118
 119
 120
-121</pre>
+121
+122
+123
+124
+125
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 110</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='op'>-</span><span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mp'>mp</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_mp'>mp</span>
@@ -1242,15 +1246,92 @@
       <pre class="lines">
 
 
-98
-99
-100</pre>
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dropped?'>dropped?</span>
   <span class='ivar'>@drop</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="reset_stats-instance_method">
+  
+    #<strong>reset_stats</strong>  &#x21d2; <tt><span class='object_link'><a href="" title="Swiss::Player (class)">Player</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Reset player stats.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Swiss::Player (class)">Player</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Returns the self player with all stats resetted.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 75</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_reset_stats'>reset_stats</span>
+  <span class='ivar'>@opponents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@matches</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
+  <span class='ivar'>@mp</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@gp</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='ivar'>@gw</span> <span class='op'>=</span> <span class='float'>33.33</span>
+  <span class='ivar'>@ogw</span> <span class='op'>=</span> <span class='float'>33.33</span>
+  <span class='ivar'>@mw</span> <span class='op'>=</span> <span class='float'>33.33</span>
+  <span class='ivar'>@omw</span> <span class='op'>=</span> <span class='float'>33.33</span>
+  <span class='ivar'>@drop</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='kw'>return</span> <span class='kw'>self</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1296,19 +1377,19 @@
       <pre class="lines">
 
 
-85
-86
-87
-88
-89
 90
 91
 92
 93
-94</pre>
+94
+95
+96
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 85</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 90</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_rows'>rows</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1330,7 +1411,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jul 24 14:21:19 2023 by
+  Generated on Mon Jul 24 16:26:18 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>

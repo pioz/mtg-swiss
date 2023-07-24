@@ -456,7 +456,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Initialize a tournament.</p>
+<p>Initialize a tournament. All existing players will be resetted with <span class='object_link'><a href="Player.html#reset_stats-instance_method" title="Swiss::Player#reset_stats (method)">Player#reset_stats</a></span>.</p>
 
 
   </div>
@@ -470,13 +470,13 @@
         <span class='name'>players</span>
       
       
-        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span>&gt;</tt>)</span>
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span>&gt;</tt>, <tt>Array&lt;String&gt;</tt>)</span>
       
       
       
         &mdash;
         <div class='inline'>
-<p>List of players participating in the tournament.</p>
+<p>List of players participating in the tournament. It can be an array of String with player names or an array of <span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span>.</p>
 </div>
       
     </li>
@@ -508,17 +508,17 @@
       <pre class="lines">
 
 
-38
-39
 40
 41
-42</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 40</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_players'>players</span><span class='comma'>,</span> <span class='label'>first_pairing_proc:</span> <span class='tlambda'>-&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_plys'>plys</span><span class='rparen'>)</span> <span class='tlambeg'>{</span> <span class='id identifier rubyid_plys'>plys</span><span class='period'>.</span><span class='id identifier rubyid_shuffle'>shuffle</span><span class='period'>.</span><span class='id identifier rubyid_each_slice'>each_slice</span><span class='lparen'>(</span><span class='int'>2</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
-  <span class='ivar'>@players</span> <span class='op'>=</span> <span class='id identifier rubyid_players'>players</span>
+  <span class='ivar'>@players</span> <span class='op'>=</span> <span class='id identifier rubyid_players'>players</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_player'>player</span><span class='op'>|</span> <span class='id identifier rubyid_player'>player</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span></span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_player'>player</span><span class='period'>.</span><span class='id identifier rubyid_reset_stats'>reset_stats</span> <span class='op'>:</span> <span class='const'><span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Player.html#initialize-instance_method" title="Swiss::Player#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_player'>player</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
   <span class='ivar'>@total_rounds</span> <span class='op'>=</span> <span class='const'>Math</span><span class='period'>.</span><span class='id identifier rubyid_log2'>log2</span><span class='lparen'>(</span><span class='ivar'>@players</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_ceil'>ceil</span>
   <span class='ivar'>@rounds</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='id identifier rubyid_pair_players'>pair_players</span><span class='lparen'>(</span><span class='id identifier rubyid_first_pairing_proc'>first_pairing_proc</span><span class='period'>.</span><span class='id identifier rubyid_call'>call</span><span class='lparen'>(</span><span class='ivar'>@players</span><span class='rparen'>)</span><span class='rparen'>)</span><span class='rbracket'>]</span>
 <span class='kw'>end</span></pre>
@@ -746,12 +746,12 @@
       <pre class="lines">
 
 
-52
-53
-54</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_round'>current_round</span>
   <span class='ivar'>@rounds</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -800,12 +800,12 @@
       <pre class="lines">
 
 
-102
-103
-104</pre>
+104
+105
+106</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 102</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 104</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_finished?'>finished?</span>
   <span class='ivar'>@rounds</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>==</span> <span class='ivar'>@total_rounds</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_round_finished?'>round_finished?</span>
@@ -881,15 +881,15 @@
       <pre class="lines">
 
 
-83
-84
 85
 86
 87
-88</pre>
+88
+89
+90</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 85</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_round'>next_round</span><span class='lparen'>(</span><span class='id identifier rubyid_pairing'>pairing</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>The current round is not yet complete. Please provide results for all the tables.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_round_finished?'>round_finished?</span>
@@ -941,12 +941,12 @@
       <pre class="lines">
 
 
-94
-95
-96</pre>
+96
+97
+98</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_round_finished?'>round_finished?</span>
   <span class='id identifier rubyid_current_round'>current_round</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:finished?</span><span class='rparen'>)</span>
@@ -1106,12 +1106,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_table_result'>set_table_result</span><span class='lparen'>(</span><span class='id identifier rubyid_table_number'>table_number</span><span class='comma'>,</span> <span class='id identifier rubyid_p1_gwc'>p1_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_p2_gwc'>p2_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_gdc'>gdc</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>p1_drop:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>p2_drop:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_round'>current_round</span><span class='lbracket'>[</span><span class='id identifier rubyid_table_number'>table_number</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='lparen'>(</span><span class='id identifier rubyid_p1_gwc'>p1_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_p2_gwc'>p2_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_gdc'>gdc</span><span class='comma'>,</span> <span class='label'>p1_drop:</span> <span class='id identifier rubyid_p1_drop'>p1_drop</span><span class='comma'>,</span> <span class='label'>p2_drop:</span> <span class='id identifier rubyid_p2_drop'>p2_drop</span><span class='rparen'>)</span>
@@ -1160,12 +1160,12 @@
       <pre class="lines">
 
 
-46
-47
-48</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_standings'>standings</span>
   <span class='ivar'>@players</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>
@@ -1234,12 +1234,12 @@
       <pre class="lines">
 
 
-59
-60
-61</pre>
+61
+62
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 61</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_number'>table_number</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_round'>current_round</span><span class='lbracket'>[</span><span class='id identifier rubyid_table_number'>table_number</span><span class='rbracket'>]</span>
@@ -1254,7 +1254,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jul 24 14:21:19 2023 by
+  Generated on Mon Jul 24 16:26:18 2023 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.34 (ruby-3.2.2).
 </div>
