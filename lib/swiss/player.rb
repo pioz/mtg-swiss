@@ -35,7 +35,9 @@ module Swiss
     # Similar to opponents' match-win percentage, a player's opponents'
     # game-win percentage is simply the average game-win percentage of all
     # that player's opponents. And, as with opponents' match-win percentage,
-    # each opponent has a minimum game-win percentage of 0.33.
+    # each opponent has a minimum game-win percentage of 0.33. The opponents'
+    # byes are ignored, and a player without opponents gets the minimum of
+    # 0.33.
     # @return [Float]
     # @see https://media.wizards.com/2023/wpn/marketing_materials/wpn/mtg_mtr_2023may29_en.pdf Magic the Gathering Tournament Rules
     attr_accessor :ogw
@@ -54,7 +56,8 @@ module Swiss
     # percentage of each opponent that player faced (ignoring those rounds
     # for which the player received a bye). Use the match-win percentage
     # definition listed above when calculating each individual opponent's
-    # match-win percentage.
+    # match-win percentage. The opponents' byes are ignored too, and a player
+    # without opponents gets the minimum of 0.33.
     # @return [Float]
     # @see https://media.wizards.com/2023/wpn/marketing_materials/wpn/mtg_mtr_2023may29_en.pdf Magic the Gathering Tournament Rules
     attr_accessor :omw

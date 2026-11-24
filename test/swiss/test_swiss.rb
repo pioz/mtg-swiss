@@ -177,7 +177,7 @@ module Swiss
       # Round 2
 
       refute_predicate t, :finished?
-      assert_equal %w[Enrico Federico Nicola Luca Alberto], t.standings.map(&:name)
+      assert_equal %w[Federico Enrico Nicola Luca Alberto], t.standings.map(&:name)
       assert_equal 3, enrico.mp
       assert_equal 33.33, enrico.omw
       assert_equal 66.67, enrico.gw
@@ -195,9 +195,9 @@ module Swiss
       assert_equal 33.33, alberto.gw
       assert_equal 66.67, alberto.ogw
       assert_equal 3, federico.mp
-      assert_equal 0.0, federico.omw
+      assert_equal 33.33, federico.omw
       assert_equal 100.0, federico.gw
-      assert_equal 0.0, federico.ogw
+      assert_equal 33.33, federico.ogw
 
       assert_equal 2, t.rounds.size
       assert_equal 3, t.current_round.size
@@ -243,13 +243,10 @@ module Swiss
       t.next_round
 
       assert_predicate t, :finished?
-      standings = t.standings.map(&:name)
-      # Federico and Alberto are tied on every tiebreaker, so their relative
-      # order is not defined.
+      # Federico and Alberto are tied on every tiebreaker, so they keep the
+      # registration order (Alberto registered before Federico).
       assert_equal 0, federico <=> alberto
-      assert_equal 'Enrico', standings[0]
-      assert_equal %w[Alberto Federico], standings[1..2].sort
-      assert_equal %w[Nicola Luca], standings[3..4]
+      assert_equal %w[Enrico Alberto Federico Nicola Luca], t.standings.map(&:name)
       assert_equal 9, enrico.mp
       assert_equal 44.44, enrico.omw
       assert_equal 75.0, enrico.gw
@@ -307,6 +304,44 @@ module Swiss
       assert_equal 1, enrico <=> nicola
       assert_equal(-1, nicola <=> enrico)
       assert_equal %w[Nicola Enrico], [enrico, nicola].sort.map(&:name)
+    end
+
+    # MTR Appendix C, Byes: "A player's byes are ignored when computing their
+    # opponents' match-win and opponents' game-win percentages."
+    def test_opponent_byes_are_ignored_in_opponents_percentages
+      enrico, nicola = players = %w[Enrico Nicola].map { |name| Player.new(name) }
+      t = Tournament.new(players, first_pairing_proc: ->(_plys) { [] })
+      Match.new(enrico, nil)
+      Match.new(enrico, nicola).result(0, 2)
+      t.send(:calculate_scores)
+
+      # Enrico's own percentages count the bye as a 2-0 win.
+      assert_equal 3, enrico.mp
+      assert_equal 50.0, enrico.mw
+      assert_equal 50.0, enrico.gw
+      # Nicola's opponents' percentages ignore Enrico's bye: 0/3 match points
+      # and 0/6 game points, so the 0.33 minimum is used.
+      assert_equal 33.33, nicola.omw
+      assert_equal 33.33, nicola.ogw
+      assert_equal 100.0, enrico.omw
+      assert_equal 100.0, enrico.ogw
+    end
+
+    def test_opponents_percentages_without_opponents_use_minimum
+      enrico = Player.new('Enrico')
+      t = Tournament.new([enrico], first_pairing_proc: ->(plys) { [[plys.first, nil]] })
+      t.set_table_result(0, 2, 0)
+      t.next_round
+
+      assert_equal 33.33, enrico.omw
+      assert_equal 33.33, enrico.ogw
+    end
+
+    def test_standings_ties_keep_registration_order
+      names = Array.new(30) { |i| "P#{i}" }
+      t = Tournament.new(names, first_pairing_proc: ->(_plys) { [] })
+
+      assert_equal names, t.standings.map(&:name)
     end
 
     def test_record_is_nil_until_match_finished
