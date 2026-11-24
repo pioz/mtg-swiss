@@ -243,7 +243,13 @@ module Swiss
       t.next_round
 
       assert_predicate t, :finished?
-      assert_equal %w[Enrico Federico Alberto Nicola Luca], t.standings.map(&:name)
+      standings = t.standings.map(&:name)
+      # Federico and Alberto are tied on every tiebreaker, so their relative
+      # order is not defined.
+      assert_equal 0, federico <=> alberto
+      assert_equal 'Enrico', standings[0]
+      assert_equal %w[Alberto Federico], standings[1..2].sort
+      assert_equal %w[Nicola Luca], standings[3..4]
       assert_equal 9, enrico.mp
       assert_equal 44.44, enrico.omw
       assert_equal 75.0, enrico.gw
@@ -264,6 +270,43 @@ module Swiss
       assert_equal 66.66, federico.omw
       assert_equal 62.5, federico.gw
       assert_equal 56.02, federico.ogw
+    end
+
+    def test_match_won_with_less_than_two_games
+      enrico = Player.new('Enrico')
+      nicola = Player.new('Nicola')
+      match = Match.new(enrico, nicola)
+
+      match.result(1, 0, 1)
+
+      assert_equal 3, match.match_points(enrico)
+      assert_equal 0, match.match_points(nicola)
+
+      match.result(0, 1)
+
+      assert_equal 0, match.match_points(enrico)
+      assert_equal 3, match.match_points(nicola)
+
+      match.result(1, 1, 1)
+
+      assert_equal 1, match.match_points(enrico)
+      assert_equal 1, match.match_points(nicola)
+    end
+
+    def test_compare_by_opponents_game_win_percentage
+      enrico = Player.new('Enrico')
+      nicola = Player.new('Nicola')
+      [enrico, nicola].each do |player|
+        player.mp = 3
+        player.omw = 50.0
+        player.gw = 40.0
+      end
+      enrico.ogw = 60.0
+      nicola.ogw = 70.0
+
+      assert_equal 1, enrico <=> nicola
+      assert_equal(-1, nicola <=> enrico)
+      assert_equal %w[Nicola Enrico], [enrico, nicola].sort.map(&:name)
     end
 
     def test_raises_if_same_oppo

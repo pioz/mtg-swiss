@@ -119,8 +119,8 @@ module Swiss
       return 1 if self.omw < other.omw
       return -1 if self.gw > other.gw
       return 1 if self.gw < other.gw
-      return -1 if self.ogw > other.gw
-      return 1 if self.ogw < other.gw
+      return -1 if self.ogw > other.ogw
+      return 1 if self.ogw < other.ogw
 
       return 0
     end
