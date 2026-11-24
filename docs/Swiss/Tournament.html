@@ -10,9 +10,9 @@
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "Swiss::Tournament";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -94,38 +96,32 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/swiss/tournament.rb</dd>
+    <dd>lib/swiss/tournament.rb
+</dd>
   </dl>
   
 </div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>Represents a tournament with Magic the Gathering Swiss rules.</p>
-
+    <p>Represents a tournament with Magic the Gathering Swiss rules.</p>
 <p>The tournament unfolds as follows:</p>
-<ol><li>
-<p>For the first round, players are randomly paired.</p>
-</li><li>
-<p>After each round, the standings are calculated.</p>
-</li><li>
-<p>Players are paired based on their partial ranking in a strict manner, rank 1 will compete against rank 2, rank 3 against rank 4, and so on. It is ensured that a player does not face the same opponent multiple times.</p>
-</li><li>
-<p>This process continues until the total number of rounds is reached, which is <code>log2(number_of_players)</code>.</p>
-</li></ol>
-
+<ol>
+<li>For the first round, players are randomly paired.</li>
+<li>After each round, the standings are calculated.</li>
+<li>Players are paired based on their partial ranking in a strict manner,
+rank 1 will compete against rank 2, rank 3 against rank 4, and so on. It
+is ensured that a player does not face the same opponent multiple times.</li>
+<li>This process continues until the total number of rounds is reached,
+which is <code>log2(number_of_players)</code>.</li>
+</ol>
 <p>The following tiebreakers are used to determine the standings:</p>
-<ol><li>
-<p>Match points (<span class='object_link'><a href="Player.html#mp-instance_method" title="Swiss::Player#mp (method)">Player#mp</a></span>)</p>
-</li><li>
-<p>Opponents’ match-win percentage (<span class='object_link'><a href="Player.html#omw-instance_method" title="Swiss::Player#omw (method)">Player#omw</a></span>)</p>
-</li><li>
-<p>Game-win percentage (<span class='object_link'><a href="Player.html#gw-instance_method" title="Swiss::Player#gw (method)">Player#gw</a></span>)</p>
-</li><li>
-<p>Opponents’ game-win percentage (<span class='object_link'><a href="Player.html#ogw-instance_method" title="Swiss::Player#ogw (method)">Player#ogw</a></span>)</p>
-</li></ol>
-
+<ol>
+<li>Match points (<span class='object_link'><a href="Player.html#mp-instance_method" title="Swiss::Player#mp (method)">Player#mp</a></span>)</li>
+<li>Opponents' match-win percentage (<span class='object_link'><a href="Player.html#omw-instance_method" title="Swiss::Player#omw (method)">Player#omw</a></span>)</li>
+<li>Game-win percentage (<span class='object_link'><a href="Player.html#gw-instance_method" title="Swiss::Player#gw (method)">Player#gw</a></span>)</li>
+<li>Opponents' game-win percentage (<span class='object_link'><a href="Player.html#ogw-instance_method" title="Swiss::Player#ogw (method)">Player#ogw</a></span>)</li>
+</ol>
 
   </div>
 </div>
@@ -168,9 +164,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>List of players.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>List of players.</p></div></span>
   
 </li>
 
@@ -197,9 +191,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Rounds.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Rounds.</p></div></span>
   
 </li>
 
@@ -226,9 +218,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Expected number of Swiss rounds.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Expected number of Swiss rounds.</p></div></span>
   
 </li>
 
@@ -263,9 +253,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Return the current round.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Return the current round.</p></div></span>
   
 </li>
 
@@ -287,9 +275,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns <code>true</code> if the tournament has ended.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns <code>true</code> if the tournament has ended.</p></div></span>
   
 </li>
 
@@ -313,9 +299,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Initialize a tournament.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Initialize a tournament.</p></div></span>
   
 </li>
 
@@ -337,9 +321,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Go to the next round.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Go to the next round.</p></div></span>
   
 </li>
 
@@ -361,9 +343,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns <code>true</code> if the current round is finished.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns <code>true</code> if the current round is finished.</p></div></span>
   
 </li>
 
@@ -385,9 +365,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Record the results for the table “table_number”.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Record the results for the table &quot;table_number&quot;.</p></div></span>
   
 </li>
 
@@ -409,9 +387,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the current standings.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the current standings.</p></div></span>
   
 </li>
 
@@ -433,14 +409,13 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns the match being played at table “table_number”.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the match being played at table &quot;table_number&quot;.</p></div></span>
   
 </li>
 
       
     </ul>
+    
   
 
 <div id="constructor_details" class="method_details_list">
@@ -457,9 +432,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Initialize a tournament. All existing players will be reset with <span class='object_link'><a href="Player.html#reset_stats-instance_method" title="Swiss::Player#reset_stats (method)">Player#reset_stats</a></span>.</p>
-
+    <p>Initialize a tournament. All existing players will be reset with
+<span class='object_link'><a href="Player.html#reset_stats-instance_method" title="Swiss::Player#reset_stats (method)">Player#reset_stats</a></span>.</p>
 
   </div>
 </div>
@@ -477,9 +451,9 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>List of players participating in the tournament. It can be an array of String with player names or an array of <span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span>.</p>
-</div>
+        <div class='inline'><p>List of players
+participating in the tournament. It can be an array of String with
+player names or an array of <span class='object_link'><a href="Player.html" title="Swiss::Player (class)">Player</a></span>.</p></div>
       
     </li>
   
@@ -495,9 +469,8 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Proc used for first round pairing. Must return an array of player tuples.</p>
-</div>
+        <div class='inline'><p>Proc used for first round pairing. Must
+return an array of player tuples.</p></div>
       
     </li>
   
@@ -547,9 +520,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>List of players.</p>
-
+    <p>List of players.</p>
 
   </div>
 </div>
@@ -603,9 +574,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Rounds.</p>
-
+    <p>Rounds.</p>
 
   </div>
 </div>
@@ -659,9 +628,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Expected number of Swiss rounds.</p>
-
+    <p>Expected number of Swiss rounds.</p>
 
   </div>
 </div>
@@ -720,9 +687,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Return the current round.</p>
-
+    <p>Return the current round.</p>
 
   </div>
 </div>
@@ -748,12 +713,12 @@
       <pre class="lines">
 
 
-55
 56
-57</pre>
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_current_round'>current_round</span>
   <span class='ivar'>@rounds</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -774,9 +739,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns <code>true</code> if the tournament has ended. A tournament is considered finished when has reached <span class='object_link'><a href="#total_rounds-instance_method" title="Swiss::Tournament#total_rounds (method)">#total_rounds</a></span> rounds and all rounds are finished.</p>
-
+    <p>Returns <code>true</code> if the tournament has ended. A tournament is considered
+finished when has reached <span class='object_link'><a href="#total_rounds-instance_method" title="Swiss::Tournament#total_rounds (method)">#total_rounds</a></span> rounds and all rounds are
+finished.</p>
 
   </div>
 </div>
@@ -802,12 +767,12 @@
       <pre class="lines">
 
 
-105
 106
-107</pre>
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_finished?'>finished?</span>
   <span class='ivar'>@rounds</span><span class='period'>.</span><span class='id identifier rubyid_size'>size</span> <span class='op'>==</span> <span class='ivar'>@total_rounds</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_round_finished?'>round_finished?</span>
@@ -828,9 +793,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p class="note returns_void">This method returns an undefined value.</p>
-<p>Go to the next round. Calculate the current standings and create new round if <span class='object_link'><a href="#total_rounds-instance_method" title="Swiss::Tournament#total_rounds (method)">#total_rounds</a></span> not reached.</p>
-
+    <p class="note returns_void">This method returns an undefined value.</p><p>Go to the next round. Calculate the current standings and create new
+round if <span class='object_link'><a href="#total_rounds-instance_method" title="Swiss::Tournament#total_rounds (method)">#total_rounds</a></span> not reached.</p>
 
   </div>
 </div>
@@ -850,9 +814,8 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Override the pairing for the next round.</p>
-</div>
+        <div class='inline'><p>Override the pairing for the next
+round.</p></div>
       
     </li>
   
@@ -869,9 +832,9 @@
       
       
         
-        <div class='inline'>
-<p>RuntimeError If the round is not finished. A round is considered finished when all the results have been recorded with <span class='object_link'><a href="#set_table_result-instance_method" title="Swiss::Tournament#set_table_result (method)">#set_table_result</a></span> method.</p>
-</div>
+        <div class='inline'><p>RuntimeError If the round is not finished. A round is considered
+finished when all the results have been recorded with
+<span class='object_link'><a href="#set_table_result-instance_method" title="Swiss::Tournament#set_table_result (method)">#set_table_result</a></span> method.</p></div>
       
     </li>
   
@@ -883,15 +846,15 @@
       <pre class="lines">
 
 
-86
 87
 88
 89
 90
-91</pre>
+91
+92</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 86</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 87</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_next_round'>next_round</span><span class='lparen'>(</span><span class='id identifier rubyid_pairing'>pairing</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>The current round is not yet complete. Please provide results for all the tables.</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_round_finished?'>round_finished?</span>
@@ -915,9 +878,9 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns <code>true</code> if the current round is finished. A round is considered finished when all the results have been recorded with <span class='object_link'><a href="#set_table_result-instance_method" title="Swiss::Tournament#set_table_result (method)">#set_table_result</a></span> method.</p>
-
+    <p>Returns <code>true</code> if the current round is finished. A round is considered
+finished when all the results have been recorded with
+<span class='object_link'><a href="#set_table_result-instance_method" title="Swiss::Tournament#set_table_result (method)">#set_table_result</a></span> method.</p>
 
   </div>
 </div>
@@ -943,12 +906,12 @@
       <pre class="lines">
 
 
-97
 98
-99</pre>
+99
+100</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 98</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_round_finished?'>round_finished?</span>
   <span class='id identifier rubyid_current_round'>current_round</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:finished?</span><span class='rparen'>)</span>
@@ -969,9 +932,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Record the results for the table “table_number”.</p>
-
+    <p>Record the results for the table &quot;table_number&quot;.</p>
 
   </div>
 </div>
@@ -989,9 +950,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The match index of the current round.</p>
-</div>
+        <div class='inline'><p>The match index of the current round.</p></div>
       
     </li>
   
@@ -1005,9 +964,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Player 1 game win count.</p>
-</div>
+        <div class='inline'><p>Player 1 game win count.</p></div>
       
     </li>
   
@@ -1021,9 +978,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Player 2 game win count.</p>
-</div>
+        <div class='inline'><p>Player 2 game win count.</p></div>
       
     </li>
   
@@ -1039,9 +994,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Number of tied games.</p>
-</div>
+        <div class='inline'><p>Number of tied games.</p></div>
       
     </li>
   
@@ -1057,9 +1010,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Player 1 drop after this match.</p>
-</div>
+        <div class='inline'><p>Player 1 drop after this match.</p></div>
       
     </li>
   
@@ -1075,9 +1026,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Player 2 drop after this match.</p>
-</div>
+        <div class='inline'><p>Player 2 drop after this match.</p></div>
       
     </li>
   
@@ -1094,9 +1043,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The record of the match (Wins–Losses–Draws).</p>
-</div>
+        <div class='inline'><p>The record of the match (Wins–Losses–Draws).</p></div>
       
     </li>
   
@@ -1108,12 +1055,12 @@
       <pre class="lines">
 
 
-74
 75
-76</pre>
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set_table_result'>set_table_result</span><span class='lparen'>(</span><span class='id identifier rubyid_table_number'>table_number</span><span class='comma'>,</span> <span class='id identifier rubyid_p1_gwc'>p1_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_p2_gwc'>p2_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_gdc'>gdc</span> <span class='op'>=</span> <span class='int'>0</span><span class='comma'>,</span> <span class='label'>p1_drop:</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='label'>p2_drop:</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_round'>current_round</span><span class='lbracket'>[</span><span class='id identifier rubyid_table_number'>table_number</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_result'>result</span><span class='lparen'>(</span><span class='id identifier rubyid_p1_gwc'>p1_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_p2_gwc'>p2_gwc</span><span class='comma'>,</span> <span class='id identifier rubyid_gdc'>gdc</span><span class='comma'>,</span> <span class='label'>p1_drop:</span> <span class='id identifier rubyid_p1_drop'>p1_drop</span><span class='comma'>,</span> <span class='label'>p2_drop:</span> <span class='id identifier rubyid_p2_drop'>p2_drop</span><span class='rparen'>)</span>
@@ -1134,9 +1081,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns the current standings.</p>
-
+    <p>Returns the current standings. Players tied on every tiebreaker keep
+their registration order.</p>
 
   </div>
 </div>
@@ -1162,15 +1108,15 @@
       <pre class="lines">
 
 
-49
 50
-51</pre>
+51
+52</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_standings'>standings</span>
-  <span class='ivar'>@players</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>
+  <span class='ivar'>@players</span><span class='period'>.</span><span class='id identifier rubyid_each_with_index'>each_with_index</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span><span class='comma'>,</span> <span class='id identifier rubyid_i'>i</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_b'>b</span><span class='comma'>,</span> <span class='id identifier rubyid_j'>j</span><span class='rparen'>)</span><span class='op'>|</span> <span class='lparen'>(</span><span class='id identifier rubyid_a'>a</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_b'>b</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_nonzero?'>nonzero?</span> <span class='op'>||</span> <span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span> <span class='op'>&lt;=&gt;</span> <span class='id identifier rubyid_j'>j</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:first</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1188,9 +1134,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns the match being played at table “table_number”.</p>
-
+    <p>Returns the match being played at table &quot;table_number&quot;.</p>
 
   </div>
 </div>
@@ -1208,9 +1152,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The match index of the current round.</p>
-</div>
+        <div class='inline'><p>The match index of the current round.</p></div>
       
     </li>
   
@@ -1236,12 +1178,12 @@
       <pre class="lines">
 
 
-62
 63
-64</pre>
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/tournament.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='id identifier rubyid_table_number'>table_number</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_current_round'>current_round</span><span class='lbracket'>[</span><span class='id identifier rubyid_table_number'>table_number</span><span class='rbracket'>]</span>
@@ -1256,9 +1198,9 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jul 24 16:38:59 2023 by
+  Generated on Tue Nov 24 11:23:14 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.2.2).
+  0.9.45 (ruby-4.0.1).
 </div>
 
     </div>

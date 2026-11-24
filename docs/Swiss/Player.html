@@ -10,9 +10,9 @@
   
 </title>
 
-  <link rel="stylesheet" href="../css/style.css" type="text/css" />
+  <link rel="stylesheet" href="../css/style.css" type="text/css">
 
-  <link rel="stylesheet" href="../css/common.css" type="text/css" />
+  <link rel="stylesheet" href="../css/common.css" type="text/css">
 
 <script type="text/javascript">
   pathId = "Swiss::Player";
@@ -27,6 +27,8 @@
 
   </head>
   <body>
+    <div id="main_progress" aria-hidden="true"></div>
+
     <div class="nav_wrap">
       <iframe id="nav" src="../class_list.html?1"></iframe>
       <div id="resizer"></div>
@@ -94,16 +96,15 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>lib/swiss/player.rb</dd>
+    <dd>lib/swiss/player.rb
+</dd>
   </dl>
   
 </div>
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>Represents a player in the Swiss tournament.</p>
-
+    <p>Represents a player in the Swiss tournament.</p>
 
   </div>
 </div>
@@ -137,9 +138,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Player has dropped.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Player has dropped.</p></div></span>
   
 </li>
 
@@ -164,9 +163,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Similar to the match-win percentage, a player’s game-win percentage is the total number of game points they earned divided by the total game points possible (generally, 3 times the number of games played).</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Similar to the match-win percentage, a player's game-win percentage is the total number of game points they earned divided by the total game points possible (generally, 3 times the number of games played).</p></div></span>
   
 </li>
 
@@ -193,9 +190,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>List of all matches for the whole tournament.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>List of all matches for the whole tournament.</p></div></span>
   
 </li>
 
@@ -220,9 +215,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Match Points.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Match Points.</p></div></span>
   
 </li>
 
@@ -247,9 +240,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Match Win Percentage.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Match Win Percentage.</p></div></span>
   
 </li>
 
@@ -276,9 +267,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>The player identifier.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>The player identifier.</p></div></span>
   
 </li>
 
@@ -303,9 +292,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Similar to opponents’ match-win percentage, a player’s opponents’ game-win percentage is simply the average game-win percentage of all that player’s opponents.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Similar to opponents' match-win percentage, a player's opponents' game-win percentage is simply the average game-win percentage of all that player's opponents.</p></div></span>
   
 </li>
 
@@ -330,9 +317,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>A player’s opponents’ match-win percentage is the average match-win percentage of each opponent that player faced (ignoring those rounds for which the player received a bye).</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>A player's opponents' match-win percentage is the average match-win percentage of each opponent that player faced (ignoring those rounds for which the player received a bye).</p></div></span>
   
 </li>
 
@@ -359,9 +344,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>List of opponents for the whole tournament.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>List of opponents for the whole tournament.</p></div></span>
   
 </li>
 
@@ -396,9 +379,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Compare two players for sort the standings.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Compare two players for sort the standings.</p></div></span>
   
 </li>
 
@@ -420,9 +401,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns <code>true</code> if the player has dropped.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns <code>true</code> if the player has dropped.</p></div></span>
   
 </li>
 
@@ -446,9 +425,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Create a new player.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Create a new player.</p></div></span>
   
 </li>
 
@@ -470,9 +447,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Reset player stats.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Reset player stats.</p></div></span>
   
 </li>
 
@@ -494,14 +469,13 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>Returns a string representation of the player with their stats.</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns a string representation of the player with their stats.</p></div></span>
   
 </li>
 
       
     </ul>
+    
   
 
 <div id="constructor_details" class="method_details_list">
@@ -518,9 +492,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Create a new player.</p>
-
+    <p>Create a new player.</p>
 
   </div>
 </div>
@@ -538,9 +510,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>The name of the player.</p>
-</div>
+        <div class='inline'><p>The name of the player.</p></div>
       
     </li>
   
@@ -553,13 +523,13 @@
       <pre class="lines">
 
 
-68
-69
-70
-71</pre>
+71
+72
+73
+74</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 68</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
   <span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
@@ -588,9 +558,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Player has dropped.</p>
-
+    <p>Player has dropped.</p>
 
   </div>
 </div>
@@ -616,12 +584,12 @@
       <pre class="lines">
 
 
-64
-65
-66</pre>
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 64</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 67</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_drop'>drop</span>
   <span class='ivar'>@drop</span>
@@ -644,9 +612,10 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Similar to the match-win percentage, a player’s game-win percentage is the total number of game points they earned divided by the total game points possible (generally, 3 times the number of games played). Again, use 0.33 if the actual game-win percentage is lower than that.</p>
-
+    <p>Similar to the match-win percentage, a player's game-win percentage is
+the total number of game points they earned divided by the total game
+points possible (generally, 3 times the number of games played). Again,
+use 0.33 if the actual game-win percentage is lower than that.</p>
 
   </div>
 </div>
@@ -707,9 +676,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>List of all matches for the whole tournament.</p>
-
+    <p>List of all matches for the whole tournament.</p>
 
   </div>
 </div>
@@ -763,14 +730,14 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Match Points. Players earn 3 match points for each match win, 0 points for each match loss and 1 match point for each match ending in a draw. Players receiving byes are considered to have won the match 2-0-0.</p>
-<ul><li>
-<p>A player’s record is 6–2–0 (Wins–Losses–Draws). That player has 18 match points (6<em>3, 2</em>0, 0*1).</p>
-</li><li>
-<p>A player’s record is 4–2–2. That player has 14 match points (4<em>3, 2</em>0,  2*1).</p>
-</li></ul>
-
+    <p>Match Points. Players earn 3 match points for each match win, 0 points
+for each match loss and 1 match point for each match ending in a draw.
+Players receiving byes are considered to have won the match 2-0-0.</p>
+<ul>
+<li>A player's record is 6–2–0 (Wins–Losses–Draws). That player has 18 match points (6<em>3, 2</em>0, 0*1).</li>
+<li>A player's record is 4–2–2. That player has 14 match points (4<em>3, 2</em>0,
+2*1).</li>
+</ul>
 
   </div>
 </div>
@@ -831,9 +798,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Match Win Percentage. A player’s match-win percentage is that player’s accumulated match points divided by the total match points possible in those rounds (generally, 3 times the number of rounds played). If this number is lower than 0.33, use 0.33 instead. The minimum match-win percentage of 0.33 limits the effect low performances have when calculating and comparing opponents’ match-win percentage.</p>
-
+    <p>Match Win Percentage. A player's match-win percentage is that player's
+accumulated match points divided by the total match points possible in
+those rounds (generally, 3 times the number of rounds played). If this
+number is lower than 0.33, use 0.33 instead. The minimum match-win
+percentage of 0.33 limits the effect low performances have when
+calculating and comparing opponents' match-win percentage.</p>
 
   </div>
 </div>
@@ -866,12 +836,12 @@
       <pre class="lines">
 
 
-51
-52
-53</pre>
+53
+54
+55</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_mw'>mw</span>
   <span class='ivar'>@mw</span>
@@ -894,9 +864,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>The player identifier.</p>
-
+    <p>The player identifier.</p>
 
   </div>
 </div>
@@ -950,9 +918,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Similar to opponents’ match-win percentage, a player’s opponents’ game-win percentage is simply the average game-win percentage of all that player’s opponents. And, as with opponents’ match-win percentage, each opponent has a minimum game-win percentage of 0.33.</p>
-
+    <p>Similar to opponents' match-win percentage, a player's opponents'
+game-win percentage is simply the average game-win percentage of all
+that player's opponents. And, as with opponents' match-win percentage,
+each opponent has a minimum game-win percentage of 0.33. The opponents'
+byes are ignored, and a player without opponents gets the minimum of
+0.33.</p>
 
   </div>
 </div>
@@ -985,12 +956,12 @@
       <pre class="lines">
 
 
-41
-42
-43</pre>
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 41</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ogw'>ogw</span>
   <span class='ivar'>@ogw</span>
@@ -1013,9 +984,12 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>A player’s opponents’ match-win percentage is the average match-win percentage of each opponent that player faced (ignoring those rounds for which the player received a bye). Use the match-win percentage definition listed above when calculating each individual opponent’s match-win percentage.</p>
-
+    <p>A player's opponents' match-win percentage is the average match-win
+percentage of each opponent that player faced (ignoring those rounds
+for which the player received a bye). Use the match-win percentage
+definition listed above when calculating each individual opponent's
+match-win percentage. The opponents' byes are ignored too, and a player
+without opponents gets the minimum of 0.33.</p>
 
   </div>
 </div>
@@ -1048,12 +1022,12 @@
       <pre class="lines">
 
 
-60
-61
-62</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_omw'>omw</span>
   <span class='ivar'>@omw</span>
@@ -1076,9 +1050,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>List of opponents for the whole tournament.</p>
-
+    <p>List of opponents for the whole tournament.</p>
 
   </div>
 </div>
@@ -1137,18 +1109,14 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Compare two players for sort the standings. The following tiebreakers are used to determine how a player ranks in a tournament:</p>
-<ol><li>
-<p>Match points</p>
-</li><li>
-<p>Opponents’ match-win percentage</p>
-</li><li>
-<p>Game-win percentage</p>
-</li><li>
-<p>Opponents’ game-win percentage</p>
-</li></ol>
-
+    <p>Compare two players for sort the standings. The following tiebreakers
+are used to determine how a player ranks in a tournament:</p>
+<ol>
+<li>Match points</li>
+<li>Opponents' match-win percentage</li>
+<li>Game-win percentage</li>
+<li>Opponents' game-win percentage</li>
+</ol>
 
   </div>
 </div>
@@ -1174,9 +1142,6 @@
       <pre class="lines">
 
 
-115
-116
-117
 118
 119
 120
@@ -1185,10 +1150,13 @@
 123
 124
 125
-126</pre>
+126
+127
+128
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 115</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 118</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='op'>-</span><span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_mp'>mp</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_mp'>mp</span>
@@ -1197,8 +1165,8 @@
   <span class='kw'>return</span> <span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_omw'>omw</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_omw'>omw</span>
   <span class='kw'>return</span> <span class='op'>-</span><span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gw'>gw</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_gw'>gw</span>
   <span class='kw'>return</span> <span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_gw'>gw</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_gw'>gw</span>
-  <span class='kw'>return</span> <span class='op'>-</span><span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ogw'>ogw</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_gw'>gw</span>
-  <span class='kw'>return</span> <span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ogw'>ogw</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_gw'>gw</span>
+  <span class='kw'>return</span> <span class='op'>-</span><span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ogw'>ogw</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_ogw'>ogw</span>
+  <span class='kw'>return</span> <span class='int'>1</span> <span class='kw'>if</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_ogw'>ogw</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_ogw'>ogw</span>
 
   <span class='kw'>return</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
@@ -1218,9 +1186,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns <code>true</code> if the player has dropped.</p>
-
+    <p>Returns <code>true</code> if the player has dropped.</p>
 
   </div>
 </div>
@@ -1246,12 +1212,12 @@
       <pre class="lines">
 
 
-103
-104
-105</pre>
+106
+107
+108</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 106</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_dropped?'>dropped?</span>
   <span class='ivar'>@drop</span>
@@ -1272,9 +1238,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Reset player stats.</p>
-
+    <p>Reset player stats.</p>
 
   </div>
 </div>
@@ -1291,9 +1255,7 @@
       
       
         &mdash;
-        <div class='inline'>
-<p>Returns the self player with all stats reset.</p>
-</div>
+        <div class='inline'><p>Returns the self player with all stats reset.</p></div>
       
     </li>
   
@@ -1305,9 +1267,6 @@
       <pre class="lines">
 
 
-75
-76
-77
 78
 79
 80
@@ -1316,10 +1275,13 @@
 83
 84
 85
-86</pre>
+86
+87
+88
+89</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_reset_stats'>reset_stats</span>
   <span class='ivar'>@opponents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1349,9 +1311,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
-<p>Returns a string representation of the player with their stats.</p>
-
+    <p>Returns a string representation of the player with their stats.</p>
 
   </div>
 </div>
@@ -1377,19 +1337,19 @@
       <pre class="lines">
 
 
-90
-91
-92
 93
 94
 95
 96
 97
 98
-99</pre>
+99
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 90</span>
+      <pre class="code"><span class="info file"># File 'lib/swiss/player.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_rows'>rows</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
@@ -1411,9 +1371,9 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Jul 24 16:38:58 2023 by
+  Generated on Tue Nov 24 11:23:14 2026 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.34 (ruby-3.2.2).
+  0.9.45 (ruby-4.0.1).
 </div>
 
     </div>

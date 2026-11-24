@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mtg-swiss (0.1.0)
+    mtg-swiss (0.2.0)
 
 GEM
   remote: https://rubygems.org/
@@ -17,6 +17,7 @@ GEM
       ast (~> 2.4.1)
       racc
     prism (2.1.0)
+    prism (2.1.0-arm64-darwin)
     racc (1.8.1)
     rainbow (3.1.1)
     rake (13.4.2)
