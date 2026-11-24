@@ -105,7 +105,7 @@ module Swiss
     # the match is not finished.
     # @return [String,nil]
     def record
-      return nil? unless self.finished?
+      return nil unless self.finished?
 
       return "#{@p1_gwc}-#{@p2_gwc}-#{@gdc}"
     end

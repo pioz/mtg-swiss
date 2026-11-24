@@ -309,6 +309,62 @@ module Swiss
       assert_equal %w[Nicola Enrico], [enrico, nicola].sort.map(&:name)
     end
 
+    def test_record_is_nil_until_match_finished
+      match = Match.new(Player.new('Enrico'), Player.new('Nicola'))
+
+      assert_nil match.record
+
+      match.result(2, 1)
+
+      assert_equal '2-1-0', match.record
+    end
+
+    def test_pairing_backtracks_when_greedy_choice_fails
+      enrico, nicola, luca, alberto = players = %w[Enrico Nicola Luca Alberto].map { |name| Player.new(name) }
+      t = Tournament.new(players, first_pairing_proc: ->(_plys) { [] })
+      Match.new(luca, alberto)
+      enrico.mp = 9
+      nicola.mp = 6
+      luca.mp = 3
+      alberto.mp = 0
+
+      # A greedy pairing would match Enrico vs Nicola, leaving Luca and
+      # Alberto (who already played each other) without a valid opponent.
+      tables = t.send(:pair_players).map(&:to_s)
+
+      assert_equal ['Enrico vs Luca', 'Nicola vs Alberto'], tables
+    end
+
+    def test_bye_goes_to_lowest_ranked_player_without_a_bye
+      enrico, nicola, luca = players = %w[Enrico Nicola Luca].map { |name| Player.new(name) }
+      t = Tournament.new(players, first_pairing_proc: ->(_plys) { [] })
+      Match.new(luca, nil)
+      enrico.mp = 6
+      nicola.mp = 3
+      luca.mp = 3
+      nicola.omw = 50.0
+      luca.omw = 40.0
+
+      tables = t.send(:pair_players).map(&:to_s)
+
+      assert_equal ['Enrico vs Luca', 'Nicola bye'], tables
+    end
+
+    def test_raises_if_no_valid_pairing_exists
+      enrico, nicola = players = %w[Enrico Nicola].map { |name| Player.new(name) }
+      t = Tournament.new(players, first_pairing_proc: ->(plys) { [plys] })
+      t.set_table_result(0, 2, 0)
+      t.instance_variable_set(:@total_rounds, 2)
+
+      error = assert_raises RuntimeError do
+        t.next_round
+      end
+
+      assert_equal 'Unable to pair players for the next round without repeating a match.', error.message
+      assert_equal 3, enrico.mp
+      assert_equal 0, nicola.mp
+    end
+
     def test_raises_if_same_oppo
       enrico = Player.new('Enrico')
       nicola = Player.new('Nicola')
