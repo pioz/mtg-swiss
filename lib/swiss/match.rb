@@ -75,17 +75,16 @@ module Swiss
       @bye
     end
 
-    # Returns the match points gained from "player".
+    # Returns the match points gained from "player". The player who won more
+    # games wins the match (3 points), the other loses (0 points); if both
+    # won the same number of games the match is a draw (1 point).
     # @param player [Player]
     # @return [Integer]
     def match_points(player)
-      if @p1 == player
-        return 3 if @p1_gwc == 2
-        return 0 if @p2_gwc == 2
-      else
-        return 3 if @p2_gwc == 2
-        return 0 if @p1_gwc == 2
-      end
+      wins, losses = @p1 == player ? [@p1_gwc, @p2_gwc] : [@p2_gwc, @p1_gwc]
+      return 3 if wins > losses
+      return 0 if wins < losses
+
       return 1
     end
 
