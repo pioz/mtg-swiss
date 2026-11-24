@@ -44,10 +44,11 @@ module Swiss
       @rounds = [pair_players(first_pairing_proc.call(@players))]
     end
 
-    # Returns the current standings.
+    # Returns the current standings. Players tied on every tiebreaker keep
+    # their registration order.
     # @return [Array<Player>]
     def standings
-      @players.sort
+      @players.each_with_index.sort { |(a, i), (b, j)| (a <=> b).nonzero? || (i <=> j) }.map(&:first)
     end
 
     # Return the current round.
@@ -117,7 +118,7 @@ module Swiss
     # bye goes to the lowest ranked player who has not had one yet (or to the
     # lowest ranked player if everyone already had a bye).
     def swiss_pairing
-      pool = @players.reject(&:dropped?).sort
+      pool = standings.reject(&:dropped?)
       tables = nil
       if pool.size.even?
         tables = pair_pool(pool)
@@ -183,8 +184,8 @@ module Swiss
           calculate_player_stats(oppo, skip_bye: true)
         end
         if oppo_stats.empty?
-          player.omw = 0.0
-          player.ogw = 0.0
+          player.omw = 33.33
+          player.ogw = 33.33
         else
           player.omw = (oppo_stats.sum { |s| s[:mw] } / oppo_stats.size).round(2)
           player.ogw = (oppo_stats.sum { |s| s[:gw] } / oppo_stats.size).round(2)
