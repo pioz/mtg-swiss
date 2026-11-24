@@ -109,22 +109,48 @@ module Swiss
     private
 
     def pair_players(tables = nil)
-      if tables.nil?
-        tables = []
-        pool = @players.reject(&:dropped?).sort.dup
-        while pool.size > 1
-          p1 = pool.shift
-          pool.each do |p2|
-            next if p1.opponents.include?(p2)
-
-            pool.delete(p2)
-            tables << [p1, p2]
-            break
-          end
-        end
-        tables << [pool.first, nil] if pool.size == 1
-      end
+      tables ||= swiss_pairing
       return tables.map { |(player1, player2)| Match.new(player1, player2) }
+    end
+
+    # Pair the active players by standings. With an odd number of players the
+    # bye goes to the lowest ranked player who has not had one yet (or to the
+    # lowest ranked player if everyone already had a bye).
+    def swiss_pairing
+      pool = @players.reject(&:dropped?).sort
+      tables = nil
+      if pool.size.even?
+        tables = pair_pool(pool)
+      else
+        bye_candidates = pool.reject { |player| player.matches.any?(&:bye?) }
+        bye_candidates = pool if bye_candidates.empty?
+        bye_candidates.reverse_each do |bye_player|
+          tables = pair_pool(pool - [bye_player])
+          next unless tables
+
+          tables << [bye_player, nil]
+          break
+        end
+      end
+      raise 'Unable to pair players for the next round without repeating a match.' unless tables
+
+      return tables
+    end
+
+    # Pair the highest ranked player with the highest ranked opponent they
+    # have not faced yet, backtracking when the remaining players cannot be
+    # paired. Returns `nil` if no valid pairing exists.
+    def pair_pool(pool)
+      return [] if pool.empty?
+
+      player1, *rest = pool
+      rest.each do |player2|
+        next if player1.opponents.include?(player2)
+
+        tables = pair_pool(rest - [player2])
+        return tables.unshift([player1, player2]) if tables
+      end
+      return nil
     end
 
     def calculate_player_stats(player, skip_bye:)
